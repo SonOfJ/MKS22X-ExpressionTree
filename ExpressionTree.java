@@ -1,9 +1,9 @@
 public class ExpressionTree{
   public String toString(){
     if (isValue) {
-      return getValue() + "";
+      return getValue();
     }
-    return getLeft().toString() + " + " + getRight().toString();
+    return "(" + getLeft().toString() + " + " + getRight().toString() + ")";
   }
 
   /*return the expression as a postfix notation string without parenthesis*/
