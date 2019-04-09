@@ -1,24 +1,24 @@
 public class ExpressionTree{
   public String toString(){
-    if (isValue) {
-      return getValue();
+    if (isValue()) {
+      return getValue() + "";
     }
-    return "(" + getLeft().toString() + " + " + getRight().toString() + ")";
+    return "(" + getLeft().toString() + " " + getOp() + " " + getRight().toString() + ")";
   }
   public String toStringPostfix(){
-    if (isValue) {
-      return getValue();
+    if (isValue()) {
+      return getValue() + "";
     }
-    return getLeft().toStringPostfix() + getRight().toStringPostfix() + getOp();
+    return getLeft().toStringPostfix() + " " + getRight().toStringPostfix() + " " + getOp();
   }
   public String toStringPrefix(){
-    if (isValue) {
-      return getValue();
+    if (isValue()) {
+      return getValue() + "";
     }
-    return getOp() + getLeft().toStringPrefix() + getRight().toStringPrefix();
+    return getOp() + " " + getLeft().toStringPrefix() + " " + getRight().toStringPrefix();
   }
   public double evaluate(){
-    if (isValue) {
+    if (isValue()) {
       return getValue();
     }
     return apply(getOp(), getLeft().evaluate(), getRight().evaluate());
@@ -33,9 +33,7 @@ public class ExpressionTree{
     if (op == '*') {
       return a * b;
     }
-    if (op == '/') {
-      return a / b;
-    }
+    return a / b;
   }
   private char op;
   private double value;
